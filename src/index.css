@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-pizza-red: #D62828;
+  --color-dark-text: #111111;
+  --color-soft-gray: #F5F5F5;
+  --color-yellow-accent: #F4B400;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-dark-text);
+    background-color: #FFFFFF;
+    overflow-x: hidden;
+  }
+}
+
+/* Sleek Interface design helper classes */
+.card-shadow {
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-hover:hover {
+  transform: translateY(-2px);
+  filter: brightness(110%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D62828;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B51E1E;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+

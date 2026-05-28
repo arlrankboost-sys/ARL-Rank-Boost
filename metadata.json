@@ -1,0 +1,6 @@
+{
+  "name": "Al Jannat Fast Food",
+  "description": "Premium modern pizza restaurant website with a clean, high-contrast white background design, red and yellow accents, and fully interactive pickup/delivery order selector.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
