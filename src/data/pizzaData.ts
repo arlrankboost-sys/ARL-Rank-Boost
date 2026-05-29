@@ -166,7 +166,7 @@ export const PIZZAS: Pizza[] = [
   // --- SPECIAL PIZZAS ---
   {
     id: "sp1",
-    title: "Al Jannat Special Pizza",
+    title: "Fast Food Special Pizza",
     description: "Our crowning masterpiece! Generous special marinated meats, olives, signature golden premium crust stuffing, and the chef's secret white sauce swirl.",
     category: "Special Pizzas",
     price: 700,
@@ -678,7 +678,7 @@ export const PIZZAS: Pizza[] = [
   },
   {
     id: "sw2",
-    title: "Al Jannat Special Sandwich",
+    title: "Fast Food Special Sandwich",
     description: "Stuffed with tikka chicken chunks, spicy seekh kabab crumbs, mozzarella cheese, and double chef secret garlic sauce layered on fresh buttery toasted bread.",
     category: "Sandwiches & More",
     price: 350,
@@ -1016,7 +1016,7 @@ export const DEALS: SpecialDeal[] = [
   {
     id: "fd2",
     title: "Family Deal 2",
-    subtitle: "Grand Jannat Fiesta",
+    subtitle: "Grand Fast Food Fiesta",
     description: "Medium Pizza + Golden Zinger Burger + Chicken Shawarma + Heaps of Fries + 1 Liter Cold Soda",
     price: 3300,
     image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600&auto=format&fit=crop",
@@ -1056,7 +1056,7 @@ export const REVIEWS: Review[] = [
     id: "r3",
     name: "Zulqarnain Shah",
     rating: 5,
-    comment: "Best zinger burgers in Bhagtanwala with extra crispy texture. The Special Al Jannat Special Sandwich is so loaded. Their service attitude is super respect-worthy!",
+    comment: "Best zinger burgers in Bhagtanwala with extra crispy texture. The Special Fast Food Special Sandwich is so loaded. Their service attitude is super respect-worthy!",
     city: "Sargodha district",
     date: "Last week"
   }
@@ -1065,7 +1065,7 @@ export const REVIEWS: Review[] = [
 export const STORES: StoreBranch[] = [
   {
     id: "s1",
-    name: "Al Jannat Fast Food (Bhagtanwala)",
+    name: "Fast Food (Bhagtanwala)",
     address: "Opposite Civil Hospital, Bhagtanwala City, Punjab",
     phone: "0346-7703788 • 0305-8883788",
     timings: "11:00 AM - Midnight"

@@ -32,12 +32,12 @@ export default function Deals({ onAddDealToCart }: DealsProps) {
             SPECIAL SAVINGS <span className="text-pizza-red">& DEALS</span>
           </h2>
           <p className="text-gray-500 text-sm mt-2">
-            Get your hands on Al-Jannat’s signature party packages. Perfect for friends, families, birthdays, or solo cinematic pizza sessions!
+            Get your hands on our signature party packages. Perfect for friends, families, birthdays, or solo cinematic pizza sessions!
           </p>
         </div>
 
         {/* Deals Layout Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {DEALS.map((deal) => {
             const isCopied = copiedCodeId === deal.id;
 

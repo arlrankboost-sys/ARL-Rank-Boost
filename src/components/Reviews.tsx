@@ -58,7 +58,7 @@ export default function Reviews() {
               CUSTOMER <span className="text-pizza-red">TESTIMONIALS</span>
             </h2>
             <p className="text-gray-500 text-sm mt-1 max-w-xl">
-              Don't take our word for it. Here’s why thousands of pizza connoisseurs crown Al Jannat Fast Food as their supreme slice benchmark.
+              Don't take our word for it. Here’s why thousands of pizza connoisseurs crown our fast food as their supreme slice benchmark.
             </p>
           </div>
 
@@ -167,7 +167,7 @@ export default function Reviews() {
         )}
 
         {/* Reviews Cards masonry/grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviewsList.map((rev) => (
             <div
               key={rev.id}

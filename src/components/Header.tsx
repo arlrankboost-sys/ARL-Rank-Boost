@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
-import { ShoppingCart, Menu, X, Phone, Clock, MapPin } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ShoppingCart, Menu, X, Phone } from "lucide-react";
 
 interface HeaderProps {
   cartCount: number;
   onOpenCart: () => void;
-  activeSection: string;
+  activeSection?: string;
 }
 
-export default function Header({ cartCount, onOpenCart, activeSection }: HeaderProps) {
+export default function Header({ cartCount, onOpenCart }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,31 +27,27 @@ export default function Header({ cartCount, onOpenCart, activeSection }: HeaderP
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // height of header
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+  const navLinks = [
+    { label: "Home", path: "/" },
+    { label: "Find Store", path: "/find-store" },
+    { label: "Pizzas Menu", path: "/menu" },
+    { label: "Best Deals", path: "/deals" },
+    { label: "Why Us", path: "/why-choose-us" },
+    { label: "Reviews", path: "/reviews" }
+  ];
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
+  const handleNavClick = (path: string) => {
+    setMobileMenuOpen(false);
+    navigate(path);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   };
 
-  const navLinks = [
-    { label: "Home", target: "hero" },
-    { label: "Find Store", target: "order-box" },
-    { label: "Pizzas Menu", target: "menu" },
-    { label: "Best Deals", target: "deals" },
-    { label: "Why Us", target: "why-choose-us" },
-    { label: "Reviews", target: "reviews" }
-  ];
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
 
   return (
     <>
@@ -64,15 +63,15 @@ export default function Header({ cartCount, onOpenCart, activeSection }: HeaderP
             {/* Logo */}
             <div
               className="flex items-center space-x-2 cursor-pointer group"
-              onClick={() => scrollToSection("hero")}
+              onClick={() => handleNavClick("/")}
               id="brand-logo"
             >
               <div className="bg-pizza-red text-white p-2 rounded-xl flex items-center justify-center transition-transform group-hover:rotate-12 duration-300">
-                <span className="font-bebas text-2xl tracking-wide">AJ</span>
+                <span className="font-bebas text-2xl tracking-wide">FF</span>
               </div>
               <div>
                 <span className="font-bebas text-2xl sm:text-3xl tracking-tight text-dark-text block hover:text-pizza-red transition-colors duration-200">
-                  AL JANNAT
+                  FAST FOOD
                 </span>
                 <span className="text-[10px] font-bold text-pizza-red tracking-widest uppercase block -mt-1">
                   Fast Food & Pizza
@@ -83,17 +82,19 @@ export default function Header({ cartCount, onOpenCart, activeSection }: HeaderP
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-1 lg:space-x-4">
               {navLinks.map((link) => (
-                <button
-                  key={link.target}
-                  onClick={() => scrollToSection(link.target)}
-                  className={`px-3 py-2 text-sm font-medium transition-all duration-200 cursor-pointer rounded-lg hover:bg-soft-gray ${
-                    activeSection === link.target
+                <a
+                  key={link.path}
+                  href={link.path}
+                  target={link.path === "/" ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                  className={`px-3 py-2 text-sm font-medium transition-all duration-200 cursor-pointer rounded-lg hover:bg-soft-gray flex items-center ${
+                    isActive(link.path)
                       ? "text-pizza-red font-semibold bg-red-50/50"
                       : "text-gray-600 hover:text-dark-text"
                   }`}
                 >
                   {link.label}
-                </button>
+                </a>
               ))}
             </nav>
 
@@ -125,7 +126,7 @@ export default function Header({ cartCount, onOpenCart, activeSection }: HeaderP
 
               {/* Order Now Responsive Promo CTA */}
               <button
-                onClick={() => scrollToSection("menu")}
+                onClick={() => handleNavClick("/menu")}
                 className="hidden sm:block bg-pizza-red text-white font-bebas tracking-wide px-5 py-2 rounded-xl text-lg active:scale-95 transition-all duration-300 btn-hover cursor-pointer"
               >
                 ORDER ONLINE
@@ -148,13 +149,20 @@ export default function Header({ cartCount, onOpenCart, activeSection }: HeaderP
           <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl transition-all duration-300 animate-fadeIn z-50">
             <div className="px-4 pt-2 pb-6 space-y-2">
               {navLinks.map((link) => (
-                <button
-                  key={link.target}
-                  onClick={() => scrollToSection(link.target)}
-                  className="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:text-pizza-red hover:bg-soft-gray rounded-xl transition-colors duration-200"
+                <a
+                  key={link.path}
+                  href={link.path}
+                  target={link.path === "/" ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block w-full text-left px-4 py-3 text-base font-semibold rounded-xl transition-colors duration-200 ${
+                    isActive(link.path)
+                      ? "text-pizza-red bg-red-50/50"
+                      : "text-gray-700 hover:text-pizza-red hover:bg-soft-gray"
+                  }`}
                 >
                   {link.label}
-                </button>
+                </a>
               ))}
               <div className="pt-4 border-t border-gray-100 flex flex-col space-y-3 px-4">
                 <a
@@ -165,7 +173,7 @@ export default function Header({ cartCount, onOpenCart, activeSection }: HeaderP
                   <span>Call 0305-8883788</span>
                 </a>
                 <button
-                  onClick={() => scrollToSection("menu")}
+                  onClick={() => handleNavClick("/menu")}
                   className="w-full bg-pizza-red text-white font-bebas text-xl py-3 rounded-xl tracking-wide hover:bg-red-700 transition-colors"
                 >
                   ORDER NOW

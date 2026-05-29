@@ -25,7 +25,7 @@ export default function WhyChooseUs() {
     {
       icon: <ShieldCheck className="text-yellow-accent" size={32} />,
       title: "Certified Gold Hygiene",
-      desc: "Al Jannat operates under rigorous sanitization standards. Every chef wears protective gear, and we have fully open kitchen designs for total inspection."
+      desc: "We operate under rigorous sanitization standards. Every chef wears protective gear, and we have fully open kitchen designs for total inspection."
     },
     {
       icon: <Users className="text-green-600" size={32} />,
@@ -41,7 +41,7 @@ export default function WhyChooseUs() {
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-pizza-red font-bold text-xs uppercase tracking-widest block mb-2">
-            🍕 THE AL JANNAT CRAFT DIFFERENCE
+            🍕 OUR CRAFT DIFFERENCE
           </span>
           <h2 className="font-bebas text-4xl sm:text-5xl lg:text-6xl text-dark-text tracking-tight uppercase leading-none">
             WHY WE ARE THE <span className="text-pizza-red">#1 PIZZA BRAND</span>
@@ -52,7 +52,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Features Bento style grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {points.map((pt, idx) => (
             <div
               key={idx}
@@ -78,7 +78,7 @@ export default function WhyChooseUs() {
           <div className="space-y-2 max-w-2xl text-center lg:text-left">
             <h3 className="font-bebas text-3xl text-dark-text">Ready to taste the Royal Premium Slices?</h3>
             <p className="text-gray-600 text-sm">
-              Place your first pickup or delivery order today and get automatic free delivery on checkout using code <span className="font-bold underline text-pizza-red tracking-wide">ALJANNATFREE</span>.
+              Place your first pickup or delivery order today and get automatic free delivery on checkout using code <span className="font-bold underline text-pizza-red tracking-wide">FASTFOODFREE</span>.
             </p>
           </div>
           <button

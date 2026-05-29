@@ -96,7 +96,7 @@ export default function OrderBox({
               How would you like to <span className="text-pizza-red">Order</span>?
             </h2>
             <p className="text-gray-500 text-sm mt-1">
-              Select delivery format or choose your closest Al-Jannat branch to explore local dynamic deals.
+              Select delivery format or choose your closest branch to explore local dynamic deals.
             </p>
           </div>
 

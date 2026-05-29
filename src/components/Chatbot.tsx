@@ -14,7 +14,7 @@ export default function Chatbot() {
     {
       id: "initial-1",
       role: "assistant",
-      text: "As-salamu Alaykum! 🍕 Welcome to Al Jannat Fast Food! I am your AI Chef Bot. How can I help spice up your day? Ask me about our signature Crown Crust pizza, spicy local tikka flavors, vegan selections, or store branches!",
+      text: "As-salamu Alaykum! 🍕 Welcome to Fast Food! I am your AI Chef Bot. How can I help spice up your day? Ask me about our signature Crown Crust pizza, spicy local tikka flavors, vegan selections, or store branches!",
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     },
   ]);
@@ -91,8 +91,8 @@ export default function Chatbot() {
   };
 
   const PRESETS = [
-    { label: "👑 What is Crown Crust?", query: "Tell me about the Al-Jannat Crown Crust pizza!" },
-    { label: "🔥 Recommend something spicy!", query: "I want a spicy recommendation from the Al Jannat menu" },
+    { label: "👑 What is Crown Crust?", query: "Tell me about the Fast Food Crown Crust pizza!" },
+    { label: "🔥 Recommend something spicy!", query: "I want a spicy recommendation from the Fast Food menu" },
     { label: "🌱 Any vegetarian options?", query: "Show me all the vegetarian pizza options available" },
     { label: "🚚 Delivery guarantee?", query: "What is your delivery speed and guarantee?" },
   ];
@@ -105,7 +105,7 @@ export default function Chatbot() {
           onClick={() => setIsOpen(true)}
           className="fixed bottom-6 left-6 z-40 bg-dark-text hover:bg-pizza-red text-white p-4.5 rounded-full shadow-2xl hover:scale-106 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border-2 border-white btn-hover group"
           id="floating-chatbot-btn"
-          aria-label="Toggle Al Jannat Chatbot"
+          aria-label="Toggle Fast Food Chatbot"
         >
           <div className="relative">
             <Bot size={24} className="group-hover:rotate-12 transition-transform duration-300" />
@@ -130,7 +130,7 @@ export default function Chatbot() {
               </div>
               <div>
                 <h3 className="font-bebas text-lg tracking-wider flex items-center gap-1.5">
-                  AL JANNAT CHEF BOT <Sparkles size={14} className="text-yellow-accent animate-pulse" />
+                  FAST FOOD CHEF BOT <Sparkles size={14} className="text-yellow-accent animate-pulse" />
                 </h3>
                 <p className="text-[10px] text-gray-400 font-mono">Live virtual assistance • Online</p>
               </div>
@@ -244,7 +244,7 @@ export default function Chatbot() {
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask Al Jannat Chef..."
+              placeholder="Ask Fast Food Chef..."
               disabled={isLoading}
               className="flex-1 bg-soft-gray focus:bg-white text-dark-text border border-transparent focus:border-pizza-red text-xs sm:text-sm py-2.5 px-4 rounded-xl outline-none transition-all disabled:opacity-50 font-sans"
             />

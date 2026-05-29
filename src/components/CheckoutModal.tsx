@@ -206,7 +206,7 @@ export default function CheckoutModal({
                   </h4>
                   <div>
                     <label className="block text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-1">
-                      When will you arrive at Al Jannat store?
+                      When will you arrive at the outlet?
                     </label>
                     <select
                       value={pickupTime}
@@ -421,7 +421,7 @@ export default function CheckoutModal({
             {/* Celebration or continuous timer estimates */}
             {trackingStep === "delivered" ? (
               <div className="bg-green-50 text-green-800 border border-green-200 p-4 rounded-2xl text-xs sm:text-sm animate-fadeIn">
-                <span className="font-bold block text-sm mb-1">Delivered! Enjoy Al-Jannat Feast!</span>
+                <span className="font-bold block text-sm mb-1">Delivered! Enjoy your Feast!</span>
                 Your food has been delivered or collected safely. Give us five-star reviews on the homepage!
               </div>
             ) : (

@@ -1,15 +1,16 @@
-import { Compass, Facebook, Instagram, Twitter, Phone, MessageSquare, MapPin, Mail, Award } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Facebook, Instagram, Twitter, Phone, MapPin, Mail, Award } from "lucide-react";
 
 interface FooterProps {
-  onNavigateToCategory: (category: string) => void;
+  onNavigateToCategory?: (category: string) => void;
 }
 
 export default function Footer({ onNavigateToCategory }: FooterProps) {
-  const handleScrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+  const navigate = useNavigate();
+
+  const handleRouteNavigate = (path: string) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const menuQuickLinks = [
@@ -24,16 +25,16 @@ export default function Footer({ onNavigateToCategory }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main 4 column structural layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 border-b border-gray-800 pb-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-gray-800 pb-12 mb-12">
           
           {/* Column 1: Outlets / Branding */}
           <div className="space-y-4 text-left">
             <div className="flex items-center space-x-2">
               <div className="bg-pizza-red p-2 rounded-xl text-white font-bebas text-lg tracking-wide">
-                AJ
+                FF
               </div>
               <div>
-                <span className="font-bebas text-3xl tracking-tight block">AL JANNAT</span>
+                <span className="font-bebas text-3xl tracking-tight block">FAST FOOD</span>
                 <span className="text-[10px] font-bold text-pizza-red tracking-widest uppercase block -mt-1.5">Fast Food & Pizza</span>
               </div>
             </div>
@@ -62,8 +63,10 @@ export default function Footer({ onNavigateToCategory }: FooterProps) {
                 <li key={idx}>
                   <button
                     onClick={() => {
-                      onNavigateToCategory(ql.category);
-                      handleScrollToSection("menu");
+                      if (onNavigateToCategory) {
+                        onNavigateToCategory(ql.category);
+                      }
+                      handleRouteNavigate("/menu");
                     }}
                     className="hover:text-white transition-colors cursor-pointer block text-left bg-transparent border-none p-0"
                   >
@@ -79,44 +82,62 @@ export default function Footer({ onNavigateToCategory }: FooterProps) {
             <h4 className="font-bebas text-xl tracking-wider text-pizza-red">QUICK LINKS</h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-gray-400">
               <li>
-                <button
-                  onClick={() => handleScrollToSection("hero")}
-                  className="hover:text-white transition-colors cursor-pointer"
+                <a
+                  href="/"
+                  className="hover:text-white transition-colors hover:underline block text-left"
                 >
-                  • Back to Top Home
-                </button>
+                  • Back to Home
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => handleScrollToSection("order-box")}
-                  className="hover:text-white transition-colors cursor-pointer"
+                <a
+                  href="/find-store"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors hover:underline block text-left"
                 >
                   • Pin Store Branches
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => handleScrollToSection("deals")}
-                  className="hover:text-white transition-colors cursor-pointer"
+                <a
+                  href="/menu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors hover:underline block text-left"
+                >
+                  • Full Menu card
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/deals"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors hover:underline block text-left"
                 >
                   • Grab Special Kombos
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => handleScrollToSection("why-choose-us")}
-                  className="hover:text-white transition-colors cursor-pointer"
+                <a
+                  href="/why-choose-us"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors hover:underline block text-left"
                 >
                   • Hygiene Standards
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => handleScrollToSection("reviews")}
-                  className="hover:text-white transition-colors cursor-pointer"
+                <a
+                  href="/reviews"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors hover:underline block text-left font-sans"
                 >
                   • Customer Feedback logs
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -135,7 +156,7 @@ export default function Footer({ onNavigateToCategory }: FooterProps) {
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={16} className="text-pizza-red" />
-                <span>contact@aljannatfastfood.com.pk</span>
+                <span>contact@fastfood.com.pk</span>
               </div>
               <div className="inline-flex items-center gap-1.5 bg-gray-800 border border-gray-750 p-2 rounded-xl text-[10px] text-gray-300">
                 <Award size={12} className="text-yellow-500" /> ISO 9001 Certified Kitchens
@@ -148,7 +169,7 @@ export default function Footer({ onNavigateToCategory }: FooterProps) {
         {/* Bottom copyright details */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 pt-4 mt-4 border-t border-gray-900">
           <div>
-            © 2026 Al Jannat Fast Food & Pizza Restaurant Systems. All Rights Reserved.
+            © 2026 Fast Food & Pizza Restaurant Systems. All Rights Reserved.
           </div>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

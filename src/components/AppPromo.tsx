@@ -20,7 +20,7 @@ export default function AppPromo() {
                 <Sparkles size={11} /> EXCLUSIVE APP DISCOUNT
               </span>
               <h2 className="font-bebas text-4xl sm:text-5xl lg:text-6xl text-dark-text leading-tight uppercase">
-                GET THE AL JANNAT APP <br />
+                GET THE FAST FOOD APP <br />
                 <span className="text-pizza-red">AND SAVINGS OF UP TO 20%</span>
               </h2>
               <p className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-xl">
@@ -105,7 +105,7 @@ export default function AppPromo() {
                 <div className="flex-grow flex flex-col justify-between pt-6 pb-2 space-y-4">
                   {/* Top appbar */}
                   <div className="flex justify-between items-center px-2">
-                    <span className="text-[10px] font-bold text-yellow-accent">AJ PIZZA APP</span>
+                    <span className="text-[10px] font-bold text-yellow-accent">FAST FOOD APP</span>
                     <span className="text-[10px] text-gray-400 font-mono">14:29 PM</span>
                   </div>
 
@@ -119,7 +119,7 @@ export default function AppPromo() {
                   {/* App quick deals list box */}
                   <div className="space-y-2">
                     <div className="bg-white text-dark-text p-2.5 rounded-xl flex items-center justify-between text-[11px] font-bold">
-                      <span>👑 Al-Jannat Crown</span>
+                      <span>👑 Fast Food Crown</span>
                       <span className="text-pizza-red">Rs.999</span>
                     </div>
                     <div className="bg-white text-dark-text p-2.5 rounded-xl flex items-center justify-between text-[11px] font-bold opacity-80">

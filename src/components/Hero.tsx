@@ -59,7 +59,7 @@ export default function Hero({ onOrderNow, onExploreMenu }: HeroProps) {
 
             {/* Subtitle Description */}
             <p className="text-gray-600 text-base sm:text-lg max-w-xl font-normal leading-relaxed">
-              Enjoy premium Pizza, Crispy Burgers, Spicy Shawarma Wrap, and smokey slow-grilled BBQ from <span className="font-semibold text-dark-text">Al Jannat Fast Food & Pizza</span>. We cook using fresh daily hand-stretched dough and real sanitary ingredients, delivering direct to your doorstep in Bhagtanwala!
+              Enjoy premium Pizza, Crispy Burgers, Spicy Shawarma Wrap, and smokey slow-grilled BBQ from <span className="font-semibold text-dark-text">Fast Food & Pizza</span>. We cook using fresh daily hand-stretched dough and real sanitary ingredients, delivering direct to your doorstep in Bhagtanwala!
             </p>
 
             {/* Call To Action Buttons */}
