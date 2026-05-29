@@ -120,10 +120,48 @@ To unlock my full AI superpowers and answer any general or technical question wi
                       * Guarantee: All delivery orders must reach within 30 minutes super hot, or customers receive premium discount vouchers.
                     - Act naturally, be incredibly engaging, informative, and complete every task with master-class brilliance!`;
 
-                    const formattedHistory = Array.isArray(history) ? history.slice(-10).map((item: any) => ({
-                      role: item.role === "assistant" ? "model" as const : "user" as const,
-                      parts: [{ text: item.text || item.content || "" }]
-                    })) : [];
+                    // Helper function to format and clean history for Gemini API
+                    const cleanHistory = (rawHistory: any[]) => {
+                      if (!Array.isArray(rawHistory)) return [];
+                      
+                      const mapped = rawHistory.map((item: any) => ({
+                        role: item.role === "assistant" ? "model" as const : "user" as const,
+                        parts: [{ text: item.text || item.content || "" }]
+                      }));
+
+                      // Find the first turn that is from 'user'
+                      let firstUserIndex = 0;
+                      while (firstUserIndex < mapped.length && mapped[firstUserIndex].role !== "user") {
+                        firstUserIndex++;
+                      }
+
+                      const filtered = mapped.slice(firstUserIndex);
+
+                      const alternating: typeof filtered = [];
+                      filtered.forEach((item) => {
+                        if (alternating.length === 0) {
+                          if (item.role === "user") {
+                            alternating.push(item);
+                          }
+                        } else {
+                          const lastItem = alternating[alternating.length - 1];
+                          if (lastItem.role !== item.role) {
+                            alternating.push(item);
+                          } else {
+                            // Merge consecutive messages of the same role
+                            const lastPart = lastItem.parts[0];
+                            const currentPart = item.parts[0];
+                            if (lastPart && currentPart) {
+                              lastPart.text = (lastPart.text + "\n" + currentPart.text).trim();
+                            }
+                          }
+                        }
+                      });
+
+                      return alternating;
+                    };
+
+                    const formattedHistory = cleanHistory(history);
 
                     const chatInstance = aiClient.chats.create({
                       model: "gemini-3.5-flash",

@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
@@ -124,12 +125,48 @@ app.post("/api/chat", async (req, res) => {
       * Guarantee: All delivery orders must reach within 30 minutes super hot, or customers receive premium discount vouchers.
     - Act naturally, be incredibly engaging, informative, and complete every task with master-class brilliance!`;
 
-    // Map incoming history to standard Gemini chat structure if supplied
-    // Standard structure: history is optional. We can create chats
-    const formattedHistory = Array.isArray(history) ? history.map((item: any) => ({
-      role: item.role === "assistant" ? "model" as const : "user" as const,
-      parts: [{ text: item.text || item.content || "" }]
-    })) : [];
+    // Helper function to format and clean history for Gemini API
+    const cleanHistory = (rawHistory: any[]) => {
+      if (!Array.isArray(rawHistory)) return [];
+      
+      const mapped = rawHistory.map((item: any) => ({
+        role: item.role === "assistant" ? "model" as const : "user" as const,
+        parts: [{ text: item.text || item.content || "" }]
+      }));
+
+      // Find the first turn that is from 'user'
+      let firstUserIndex = 0;
+      while (firstUserIndex < mapped.length && mapped[firstUserIndex].role !== "user") {
+        firstUserIndex++;
+      }
+
+      const filtered = mapped.slice(firstUserIndex);
+
+      const alternating: typeof filtered = [];
+      filtered.forEach((item) => {
+        if (alternating.length === 0) {
+          if (item.role === "user") {
+            alternating.push(item);
+          }
+        } else {
+          const lastItem = alternating[alternating.length - 1];
+          if (lastItem.role !== item.role) {
+            alternating.push(item);
+          } else {
+            // Merge consecutive messages of the same role
+            const lastPart = lastItem.parts[0];
+            const currentPart = item.parts[0];
+            if (lastPart && currentPart) {
+              lastPart.text = (lastPart.text + "\n" + currentPart.text).trim();
+            }
+          }
+        }
+      });
+
+      return alternating;
+    };
+
+    const formattedHistory = cleanHistory(history);
 
     const chatInstance = ai.chats.create({
       model: "gemini-3.5-flash",
@@ -160,6 +197,23 @@ async function main() {
       appType: "spa",
     });
     app.use(vite.middlewares);
+
+    // Fallback GET requests to index.html with Vite transforms
+    app.get("*", async (req, res, next) => {
+      // Exclude API paths
+      if (req.originalUrl.startsWith("/api/")) {
+        return next();
+      }
+      try {
+        const templatePath = path.resolve(process.cwd(), "index.html");
+        let template = fs.readFileSync(templatePath, "utf-8");
+        template = await vite.transformIndexHtml(req.originalUrl, template);
+        res.status(200).set({ "Content-Type": "text/html" }).end(template);
+      } catch (err) {
+        vite.ssrFixStacktrace(err as Error);
+        next(err);
+      }
+    });
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));

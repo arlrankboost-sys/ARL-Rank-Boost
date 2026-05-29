@@ -9,8 +9,12 @@ export default function Footer({ onNavigateToCategory }: FooterProps) {
   const navigate = useNavigate();
 
   const handleRouteNavigate = (path: string) => {
-    navigate(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (path === "/") {
+      navigate(path);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.open(path, "_blank", "noopener,noreferrer");
+    }
   };
 
   const menuQuickLinks = [

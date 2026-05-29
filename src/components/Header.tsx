@@ -38,11 +38,15 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
 
   const handleNavClick = (path: string) => {
     setMobileMenuOpen(false);
-    navigate(path);
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    if (path === "/") {
+      navigate(path);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    } else {
+      window.open(path, "_blank", "noopener,noreferrer");
+    }
   };
 
   const isActive = (path: string) => {
