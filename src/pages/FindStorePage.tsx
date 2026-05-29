@@ -20,7 +20,7 @@ export default function FindStorePage({
       {/* Visual Header Banner */}
       <div className="relative h-96 w-full overflow-hidden shadow-md">
         <img
-          src="/src/assets/images/modern_pizza_shop_1780025206195.png"
+          src="/src/assets/images/al_jannat_store_1780062285562.png"
           alt="Modern Food Store Front"
           className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 ease-out"
           referrerPolicy="no-referrer"

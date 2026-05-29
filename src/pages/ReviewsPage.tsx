@@ -7,7 +7,7 @@ export default function ReviewsPage() {
       {/* Immersive Social Proof Banner */}
       <div className="relative h-96 w-full overflow-hidden shadow-md">
         <img
-          src="/src/assets/images/pizza_party_fun_1780025259167.png"
+          src="/src/assets/images/al_jannat_hero_1780062230084.png"
           alt="Lively Happy Customers Table"
           className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 ease-out"
           referrerPolicy="no-referrer"

@@ -12,7 +12,7 @@ export default function DealsPage({ onAddDealToCart }: DealsPageProps) {
       {/* Decorative Warm Celebration Banner */}
       <div className="relative h-96 w-full overflow-hidden shadow-md">
         <img
-          src="/src/assets/images/pizza_party_fun_1780025259167.png"
+          src="/src/assets/images/al_jannat_deals_1780062259320.png"
           alt="Lively Pizza Party Celebration"
           className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 ease-out"
           referrerPolicy="no-referrer"
