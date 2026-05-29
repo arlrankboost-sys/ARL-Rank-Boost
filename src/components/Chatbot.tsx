@@ -91,10 +91,11 @@ export default function Chatbot() {
   };
 
   const PRESETS = [
-    { label: "👑 What is Crown Crust?", query: "Tell me about the Fast Food Crown Crust pizza!" },
-    { label: "🔥 Recommend something spicy!", query: "I want a spicy recommendation from the Fast Food menu" },
-    { label: "🌱 Any vegetarian options?", query: "Show me all the vegetarian pizza options available" },
-    { label: "🚚 Delivery guarantee?", query: "What is your delivery speed and guarantee?" },
+    { label: "💰 View Menu Prices", query: "Provide a quick categorized pricing list of your best pizzas, burgers, shawarmas, and sides." },
+    { label: "👑 Signature Crown Crust", query: "Tell me about the Fast Food Crown Crust pizza, its components, and exact pricing." },
+    { label: "🍔 Burgers & Rolls", query: "Give me information on your loaded Zinger burgers, shami burgers, and paratha rolls with pricing." },
+    { label: "📍 Store Outlets", query: "Where are your local store branches located and what are their phone numbers?" },
+    { label: "🎓 Ask General/Math Q", query: "Can you explain a complex science theory, solve a coding question, or prove a mathematical logic puzzle? Act like ChatGPT!" },
   ];
 
   return (
